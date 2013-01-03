@@ -1,4 +1,7 @@
 Money::Application.routes.draw do
+  resources :finances
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

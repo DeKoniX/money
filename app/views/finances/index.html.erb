@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>Количество</th>
+      <th>Описание</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+<% @finances.each do |finance| %>
+  <tr>
+    <td><%= finance.m %></td>
+    <td><%= finance.desc %></td>
+    <td><%= link_to 'Show', finance %></td>
+    <td><%= link_to 'Edit', edit_finance_path(finance) %></td>
+    <td><%= link_to 'Destroy', finance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новое изменение', new_finance_path %>
