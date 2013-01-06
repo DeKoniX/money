@@ -11,7 +11,7 @@
 
 <% @finances.each do |finance| %>
   <tr>
-    <td><%= finance.m %></td>
+    <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
     <td><%= finance.desc %></td>
     <td><%= link_to 'Show', finance %></td>
     <td><%= link_to 'Edit', edit_finance_path(finance) %></td>
