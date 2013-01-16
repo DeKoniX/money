@@ -8,6 +8,7 @@ group :assets do
 end
 
 group :default do
+  gem 'bcrypt-ruby'
   gem 'inherited_resources'
   gem 'jquery-rails'
   gem 'rails'
@@ -16,6 +17,7 @@ group :default do
 end
 
 group :development do
+  gem 'annotate'
 end
 
 group :test do
