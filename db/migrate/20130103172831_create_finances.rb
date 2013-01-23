@@ -1,7 +1,7 @@
 class CreateFinances < ActiveRecord::Migration
   def change
     create_table :finances do |t|
-      t.integer :m
+      t.decimal :m
       t.text :desc
 
       t.timestamps

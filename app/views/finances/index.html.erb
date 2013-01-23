@@ -1,8 +1,10 @@
+<%#проверка пользователя%>
 <table>
   <thead>
     <tr>
       <th>Количество</th>
       <th>Описание</th>
+      <th>Когда</th>
       <th></th>
       <th></th>
       <th></th>
@@ -13,6 +15,7 @@
   <tr>
     <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
     <td><%= finance.desc %></td>
+    <td><%= finance.created_at %></td>
     <td><%= link_to 'Show', finance %></td>
     <td><%= link_to 'Edit', edit_finance_path(finance) %></td>
     <td><%= link_to 'Destroy', finance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,3 +26,20 @@
 <br />
 
 <%= link_to 'Новое изменение', new_finance_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Количество</th>
+      <th>Описание</th>
+      <th>Кто</th>
+      <th>Когда</th>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+  </thead>
+</table>
+<%#если пользователя нет%>
+<div class="no_user">
+  <h2>Залогинетесь пожалуйста</h2>
+</div>
