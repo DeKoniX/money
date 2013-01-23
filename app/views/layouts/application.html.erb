@@ -7,8 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+ <%#логин и логоут пользователя, тут же предложение зарегестрироваться %>
+  <div class="auth">
+    <table>
+      <tr>
+        <th>Login: user</th>
+        <td>user@example.com</td>
+        <td>Logout</td>
+      </tr>
+    </table>
+  </div>
+  <div class="main">
 
 <%= yield %>
+  </div>
 
 </body>
 </html>
