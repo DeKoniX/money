@@ -1,7 +1,8 @@
 Money::Application.routes.draw do
-  get "users/new"
-
   resources :finances
+  resources :users
+
+  match '/signup', to: 'users#new'
 
 
   # The priority is based upon order of creation:
