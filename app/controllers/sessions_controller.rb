@@ -1,7 +1,6 @@
 class SessionsController < InheritedResources::Base
 
   def new
-
   end
 
   def create
@@ -17,6 +16,5 @@ class SessionsController < InheritedResources::Base
   def destroy
     sign_out
     redirect_to root_url
-
   end
 end

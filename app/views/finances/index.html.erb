@@ -9,7 +9,7 @@
     </tr>
   </thead>
 
-<% @finances.each do |finance| %>
+<% current_user.finance.each do |finance| %>
   <tr>
     <td><%= finance.m %></td>
     <td><%= finance.desc %></td>
