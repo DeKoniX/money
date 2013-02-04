@@ -1,8 +1,9 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% provide(:title, "Edit uesr") %>
+<h1>Update you profile</h1>
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages' %>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -12,9 +13,11 @@
   <%= f.label :password %>
   <%= f.password_field :password %>
 
-  <%= f.label :password_confimation %>
+  <%= f.label :password_confirmation, "Confirm Password" %>
   <%= f.password_field :password_confirmation %>
 
-  <%= f.submit "Create my account"%>
+  <%= f.submit "Save changes" %>
 <% end %>
 
+<%= gravatar_for @user %>
+<a href="http://gravatar.com/emails">change</a>

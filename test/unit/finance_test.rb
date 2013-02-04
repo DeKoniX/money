@@ -3,7 +3,7 @@
 # Table name: finances
 #
 #  id         :integer          not null, primary key
-#  m          :integer
+#  m          :decimal(, )
 #  desc       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

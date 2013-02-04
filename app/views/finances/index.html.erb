@@ -10,7 +10,7 @@
     </tr>
   </thead>
 
-<% @finances.each do |finance| %>
+<% current_user.finance.each do |finance| %>
   <tr>
     <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
     <td><%= finance.desc %></td>
