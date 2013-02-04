@@ -13,7 +13,6 @@ group :default do
   gem 'jquery-rails'
   gem 'rails'
   gem 'russian'
-  gem 'sqlite3'
   #------
   gem 'faker'
   gem 'will_paginate'
@@ -21,6 +20,7 @@ end
 
 group :development do
   gem 'annotate'
+  gem 'sqlite3'
 end
 
 group :test do
