@@ -11,15 +11,21 @@
     <div class="auth">
       <table>
         <tr>
-          <th>Login: user</th>
-          <td>user@example.com</td>
-          <td>Logout</td>
+          <% if signed_in? %>
+          <th>Login: <%= link_to current_user.name, current_user %></th>
+          <td><%= current_user.email %></td>
+          <td><%= link_to "Logout", signout_path, method: "delete" %></td>
+        <% else %>
+          <th><%= link_to 'Login', signin_path %></th>
+          <td></td>
+          <td></td>
+          <% end %>
         </tr>
       </table>
     </div>
     <div class="main">
       <% if signed_in? %>
-        <h1>I'm </h1> <h2><%= link_to "Profile", current_user %><%= link_to "Settings", edit_user_path(current_user) %></h2><%= link_to "sign out", signout_path, method: "delete" %>
+        <h1>I'm <%= current_user.name %></h1> <h2><%= link_to "Profile", current_user %> <%= link_to "Settings", edit_user_path(current_user) %></h2><%= link_to "sign out", signout_path, method: "delete" %>
     <% end %>
 
     <%= yield %>
