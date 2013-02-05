@@ -7,6 +7,12 @@ body {
     text-align: center;
     margin-left: 64%;
   }
+  h2.money {
+    color: green;
+  }
+  h2.money.minus {
+    color: red;
+  }
   table.fin {
     width: 100%;
     td {

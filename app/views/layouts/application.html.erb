@@ -12,13 +12,13 @@
       <table>
         <tr>
           <% if signed_in? %>
-          <th>Login: <%= link_to current_user.name, current_user %></th>
-          <td><%= current_user.email %></td>
-          <td><%= link_to "Logout", signout_path, method: "delete" %></td>
-        <% else %>
-          <th><%= link_to 'Login', signin_path %></th>
-          <td></td>
-          <td></td>
+            <th>Login: <%= link_to current_user.name, root_path %></th>
+            <td><%= current_user.email %></td>
+            <td><%= link_to "Logout", signout_path, method: "delete" %></td>
+          <% else %>
+            <th><%= link_to 'Login', signin_path %></th>
+            <td></td>
+            <td></td>
           <% end %>
         </tr>
       </table>
