@@ -5,7 +5,13 @@
 body {
   .auth {
     text-align: center;
-    margin-left: 64%;
+    width: 100%;
+    .b {
+      width: 45%;
+    }
+  }
+  th.menu {
+    margin-left: 0%;
   }
   h2.money {
     color: green;

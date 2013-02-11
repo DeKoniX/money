@@ -14,7 +14,7 @@
       <tr>
         <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
         <td><%= finance.desc %></td>
-        <td><%= finance.created_at %></td>
+        <td><%= finance.updated_at %></td>
         <td><%= link_to 'Edit', edit_finance_path(finance) %></td>
         <td><%= link_to 'Destroy', finance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -25,18 +25,18 @@
   <br />
 
   <%= link_to 'Новое изменение', new_finance_path %>
-  <table class="fin">
-    <thead>
-      <tr>
-        <th>Количество</th>
-        <th>Описание</th>
-        <th>Кто</th>
-        <th>Когда</th>
-        <th></td>
-        <th></td>
-      </tr>
-    </thead>
-  </table>
+  <%#<table class="fin">%>
+    <%#<thead>%>
+      <%#<tr>%>
+        <%#<th>Количество</th>%>
+        <%#<th>Описание</th>%>
+        <%#<th>Кто</th>%>
+        <%#<th>Когда</th>%>
+        <%#<th></td>%>
+        <%#<th></td>%>
+      <%#</tr>%>
+    <%#</thead>%>
+  <%#</table>%>
 <% else %>
   <%#если пользователя нет%>
   <div class="no_user">

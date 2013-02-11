@@ -8,24 +8,23 @@
   </head>
   <body>
     <%#логин и логоут пользователя, тут же предложение зарегестрироваться %>
-    <div class="auth">
-      <table>
+      <table class="auth">
         <tr>
           <% if signed_in? %>
+            <th><h2 class="menu"><%= link_to "Ваши финансы", root_path %></h2></th>
+            <td class="b"></td>
             <th>Login: <%= link_to current_user.name, root_path %></th>
             <td><%= current_user.email %></td>
             <td><%= link_to "Logout", signout_path, method: "delete" %></td>
           <% else %>
-            <th><%= link_to 'Login', signin_path %></th>
-            <td></td>
-            <td></td>
+            <td class="b"></td>
+            <th class="login"><%= link_to 'Login', signin_path %></th>
           <% end %>
         </tr>
       </table>
-    </div>
     <div class="main">
       <% if signed_in? %>
-        <h1>I'm <%= current_user.name %></h1> <h2><%= link_to "Profile", current_user %> <%= link_to "Settings", edit_user_path(current_user) %></h2><%= link_to "sign out", signout_path, method: "delete" %>
+        <h2><%= link_to "Профиль", current_user %> <%= link_to "Настройки", edit_user_path(current_user) %></h2>
     <% end %>
 
     <%= yield %>
