@@ -11,7 +11,7 @@ group :default do
   gem 'bcrypt-ruby'
   gem 'inherited_resources'
   gem 'jquery-rails'
-  gem 'rails'
+  gem 'rails', '3.2.12'
   gem 'russian'
   #------
   gem 'faker'
