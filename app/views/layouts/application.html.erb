@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
   <head>
+    <meta charset="UTF-8">
     <title>Money</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%#логин и логоут пользователя, тут же предложение зарегестрироваться %>
+    <header>
+      <%#логин и логоут пользователя, тут же предложение зарегестрироваться %>
       <table class="auth">
         <tr>
           <% if signed_in? %>
@@ -22,13 +24,14 @@
           <% end %>
         </tr>
       </table>
-    <div class="main">
-      <% if signed_in? %>
-        <h2><%= link_to "Профиль", current_user %> <%= link_to "Настройки", edit_user_path(current_user) %></h2>
-    <% end %>
+      <div class="main">
+        <% if signed_in? %>
+          <h2><%= link_to "Профиль", current_user %> <%= link_to "Настройки", edit_user_path(current_user) %></h2>
+        <% end %>
+      </header>
 
-    <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
-  </div>
-</body>
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
 </html>

@@ -1,20 +1,16 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<h1>Регистрация</h1>
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages' %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <ul><%= f.label :name, "Имя пользователя" %>: <%= f.text_field :name %></ul>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+  <ul><%= f.label :email, "EMail" %>: <%= f.text_field :email %></ul>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <ul><%= f.label :password, "Пароль" %>: <%= f.password_field :password %></ul>
 
-  <%= f.label :password_confimation %>
-  <%= f.password_field :password_confirmation %>
+  <ul><%= f.label :password_confimation, "Подтверждение пароля" %>: <%= f.password_field :password_confirmation %></ul>
 
-  <%= f.submit "Create my account"%>
+  <%= f.submit "Создать аккаунт" %>
 <% end %>
 
