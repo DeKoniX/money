@@ -1,4 +1,5 @@
 <%#проверка пользователя%>
+<%= currentTable(1) %>
 <% if signed_in? %>
   <% if current_user.finance.count != 0 %>
     <table class="fin">

@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204142911) do
+ActiveRecord::Schema.define(:version => 20130218105513) do
 
   create_table "finances", :force => true do |t|
     t.decimal  "m"
     t.text     "desc"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.integer  "user_id"
+    t.integer  "table",      :limit => 10, :default => 1
   end
 
   add_index "finances", ["user_id", "created_at"], :name => "index_finances_on_user_id_and_created_at"
