@@ -8,14 +8,15 @@ old_pid    = pid_file + '.oldbin'
 
 timeout 30
 worker_processes 4
-listen socket_file, :backlog => 1024
+listen "/srv/money/shared/unicorn.sock", :backlog => 64
 pid pid_file
 stderr_path err_log
 stdout_path log_file
 
 preload_app true
 
-GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
+GC.respond_to?(:copy_on_write_friendly=) and
+  GC.copy_on_write_friendly = true
 
 before_exec do |server|
   ENV["BUNDLE_GEMFILE"] = "#{rails_root}/Gemfile"

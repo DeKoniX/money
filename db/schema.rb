@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(:version => 20130219111716) do
   create_table "finances", :force => true do |t|
     t.decimal  "m"
     t.text     "desc"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "user_id"
-    t.integer  "table",      :limit => 10, :default => 1
+    t.integer  "table",      :default => 1
   end
 
   add_index "finances", ["user_id", "created_at"], :name => "index_finances_on_user_id_and_created_at"
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(:version => 20130219111716) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                                       :null => false
-    t.datetime "updated_at",                                       :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",                         :default => false
-    t.integer  "tablecount",      :limit => 10, :default => 1
+    t.boolean  "admin",           :default => false
+    t.integer  "tablecount",      :default => 1
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

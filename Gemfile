@@ -1,9 +1,9 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-  #gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
   gem 'uglifier'
 end
 
@@ -13,6 +13,7 @@ group :default do
   gem 'jquery-rails'
   gem 'rails', '3.2.12'
   gem 'russian'
+  gem 'sqlite3'
   #------
   gem 'faker'
   gem 'will_paginate'
@@ -21,7 +22,6 @@ end
 
 group :development do
   gem 'annotate'
-  gem 'sqlite3'
   gem 'capistrano'
   gem 'rvm-capistrano'
 end
@@ -32,5 +32,6 @@ end
 
 group :production do
   gem 'pg'
+  gem 'activerecord-postgresql-adapter'
 end
 
