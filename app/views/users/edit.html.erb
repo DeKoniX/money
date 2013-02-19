@@ -4,13 +4,15 @@
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages' %>
 
-  <ul><%= f.label :name %>: <%= f.text_field :name %></ul>
+  <ul><%= f.label :name, "Имя пользователя"%>: <%= f.text_field :name %></ul>
 
-  <ul><%= f.label :email %>: <%= f.text_field :email %></ul>
+  <ul><%= f.label :email, "EMail" %>: <%= f.text_field :email %></ul>
 
-  <ul><%= f.label :password %>: <%= f.password_field :password %></ul>
+  <ul><%= f.label :password, "Пароль" %>: <%= f.password_field :password %></ul>
 
-  <ul><%= f.label :password_confirmation, "Confirm Password" %>: <%= f.password_field :password_confirmation %></ul>
+  <ul><%= f.label :password_confirmation, "Подтверждение пароля" %>: <%= f.password_field :password_confirmation %></ul>
+
+  <ul><%= f.label :tablecount, "Количество таблиц (не больше 4)" %>: <%= f.text_field :tablecount %></ul>
 
   <%= f.submit "Save changes" %>
 <% end %>

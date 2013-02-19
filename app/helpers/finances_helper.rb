@@ -4,6 +4,10 @@ module FinancesHelper
   end
 
   def countTable
-    current_user.finance.maximum("table")
+    current_user.tablecount
+  end
+
+  def sumTable(table)
+    current_user.finance.sum(:m, :conditions => "'finances'.'table' = '#{table}'")
   end
 end

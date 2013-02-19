@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218105513) do
+ActiveRecord::Schema.define(:version => 20130219111716) do
 
   create_table "finances", :force => true do |t|
     t.decimal  "m"
@@ -27,11 +27,12 @@ ActiveRecord::Schema.define(:version => 20130218105513) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           :default => false
+    t.boolean  "admin",                         :default => false
+    t.integer  "tablecount",      :limit => 10, :default => 1
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -11,10 +11,11 @@ class FinancesController < InheritedResources::Base
   end
 
   def index
-    @money = 0
-    current_user.finance.each do |fin|
-      @money += fin.m
-    end
+    #@money = 0
+    #current_user.finance.each do |fin|
+      #@money += fin.m
+    #end
+    #user.finance.sum(:m, :conditions => "'finances'.'table' = '1'")
   end
 
   private

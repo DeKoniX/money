@@ -10,10 +10,11 @@
 #  password_digest :string(255)
 #  remember_token  :string(255)
 #  admin           :boolean          default(FALSE)
+#  tablecount      :integer          default(1)
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :tablecount
   has_secure_password
   has_many :finance, dependent: :destroy
 
@@ -25,8 +26,15 @@ class User < ActiveRecord::Base
               uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  validates :tablecount, presence: true, length: { minimum: 1, maximum: 4 }
 
   def create_remember_token
     self.update_column(:remember_token, SecureRandom.urlsafe_base64)
+  end
+
+  def update_count_table(count)
+    if count < 5
+      self.update_column(:tablecount, count)
+    end
   end
 end
