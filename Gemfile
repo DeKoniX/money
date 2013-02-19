@@ -16,11 +16,14 @@ group :default do
   #------
   gem 'faker'
   gem 'will_paginate'
+  gem 'unicorn'
 end
 
 group :development do
   gem 'annotate'
   gem 'sqlite3'
+  gem 'capistrano'
+  gem 'rvm-capistrano'
 end
 
 group :test do
