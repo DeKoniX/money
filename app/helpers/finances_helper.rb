@@ -8,6 +8,11 @@ module FinancesHelper
   end
 
   def sumTable(table)
-    current_user.finance.sum(:m, :conditions => "'table' = '#{table}'")
+    money = 0
+    currentTable(table).each do |cur|
+      money += cur.m
+    end
+    money
+    #current_user.finance.sum(:m, :conditions => "'table' = '#{table}'")
   end
 end
