@@ -27,7 +27,7 @@
   <% end %>
   <br />
 
-  <%= link_to 'Новое изменение', new_finance_path %>
+  <%= link_to 'Новое изменение', new_finance_path(table: current) %>
   <% end %>
 <% else %>
   <%#если пользователя нет%>

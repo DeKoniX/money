@@ -18,4 +18,5 @@ class Finance < ActiveRecord::Base
   validates :user_id, presence: true
   validates :desc, length: { maximum: 140 }
   validates :m, presence: true
+  validates :table, presence: true, length: { minimum: 1, maximum: 4 }
 end
