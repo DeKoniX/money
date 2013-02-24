@@ -11,6 +11,7 @@ class FinancesController < InheritedResources::Base
   end
 
   def index
+    @finances = current_user.finance.paginate(page: params[:page], :per_page => 15)
     #@money = 0
     #current_user.finance.each do |fin|
       #@money += fin.m

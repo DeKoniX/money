@@ -1,0 +1,7 @@
+<tr>
+  <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
+  <td><%= finance.desc %></td>
+  <td><%= finance.updated_at %></td>
+  <td><%= link_to 'Edit', edit_finance_path(finance, table: current) %></td>
+  <td><%= link_to 'Destroy', finance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
