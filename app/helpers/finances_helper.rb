@@ -1,7 +1,7 @@
 module FinancesHelper
   def currentTablePag(table)
     #current_user.finance.find_all_by_table(table).paginate(:page, params[:page])
-    current_user.finance.where(:table => table).paginate(:page => params[:page], :per_page => 15)
+    current_user.finance.where(:table => table).paginate(:page => params[:page], :order => "updated_at DESC", :per_page => 15)
   end
 
   def currentTable(table)
