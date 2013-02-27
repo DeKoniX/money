@@ -16,6 +16,7 @@ group :default do
   gem 'sqlite3'
   #------
   gem 'faker'
+  gem 'simple_form'
   gem 'will_paginate'
   gem 'unicorn'
 end

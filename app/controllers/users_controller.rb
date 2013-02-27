@@ -24,7 +24,7 @@ class UsersController < InheritedResources::Base
   def update
     if @user.update_attributes(params[:user])
       sign_in @user
-      redirect_to @user
+      redirect_to root_url
     else
       render 'edit'
     end

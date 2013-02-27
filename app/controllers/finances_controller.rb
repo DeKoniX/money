@@ -10,13 +10,15 @@ class FinancesController < InheritedResources::Base
     end
   end
 
+  def update
+    super do |format|
+      format.html { redirect_to root_url }
+    end
+  end
+
+
   def index
     @finances = current_user.finance.paginate(page: params[:page], :per_page => 15)
-    #@money = 0
-    #current_user.finance.each do |fin|
-      #@money += fin.m
-    #end
-    #user.finance.sum(:m, :conditions => "'finances'.'table' = '1'")
   end
 
   private
