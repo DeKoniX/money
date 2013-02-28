@@ -9,16 +9,16 @@ module FinancesHelper
     current_user.finance.where(:table => table)
   end
 
-  def countTable
-    current_user.tablecount
-  end
+  # def countTable
+  #   current_user.tablecount
+  # end
 
-  def sumTable(table)
-    money = 0
-    currentTable(table).each do |cur|
-      money += cur.m
-    end
-    money
-    #current_user.finance.sum(:m, :conditions => "'table' = '#{table}'")
-  end
+  # def sumTable(table)
+  #   money = 0
+  #   currentTable(table).each do |cur|
+  #     money += cur.m
+  #   end
+  #   money
+  #   #current_user.finance.sum(:m, :conditions => "'table' = '#{table}'")
+  # end
 end

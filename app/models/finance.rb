@@ -8,15 +8,15 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer
-#  table      :integer          default(1)
+#  wallet_id  :integer          default(1)
 #
 
 class Finance < ActiveRecord::Base
   attr_accessible :desc, :m, :table
   belongs_to :user
+  belongs_to :wallet
 
-  validates :user_id, presence: true
   validates :desc, length: { maximum: 140 }
   validates :m, presence: true
-  validates :table, presence: true, length: { minimum: 1, maximum: 4 }
+  validates :wallet_id, presence: true
 end
