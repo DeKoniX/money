@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Имя</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @wallets.each do |wallet| %>
+    <tr>
+      <td><%= wallet.name %></td>
+      <td><%= link_to 'Edit', edit_wallet_path(wallet) %></td>
+      <td><%= link_to 'Destoy', wallet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "Новое", new_wallet_path %>

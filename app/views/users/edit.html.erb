@@ -3,19 +3,20 @@
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages' %>
-
-  <ul><%= f.label :name, "Имя пользователя"%>: <%= f.text_field :name %></ul>
-
-  <ul><%= f.label :email, "EMail" %>: <%= f.text_field :email %></ul>
-
-  <ul><%= f.label :password, "Пароль" %>: <%= f.password_field :password %></ul>
-
-  <ul><%= f.label :password_confirmation, "Подтверждение пароля" %>: <%= f.password_field :password_confirmation %></ul>
-
-  <ul><%= f.label :tablecount, "Количество таблиц (не больше 4)" %>: <%= f.text_field :tablecount %></ul>
-
+  <ul>
+  <li><%= f.label :name, "Имя пользователя"%>: <%= f.text_field :name %></li>
+  <li><%= f.label :email, "EMail" %>: <%= f.text_field :email %></li>
+  <li><%= f.label :password, "Пароль" %>: <%= f.password_field :password %></li>
+  <li><%= f.label :password_confirmation, "Подтверждение пароля" %>: <%= f.password_field :password_confirmation %></li>
+  <li><%= f.label :tablecount, "Количество таблиц (не больше 4)" %>: <%= f.text_field :tablecount %></li>
   <%= f.submit "Save changes" %>
 <% end %>
-<br />
-<%= gravatar_for @user %>
-<a href="http://gravatar.com/emails">change</a>
+</ul>
+<%= gravatar_for @user %> <a href="http://gravatar.com/emails">change</a></li>
+<h2>Кошельки</h2>
+<% @wallet.each do |wall| %>
+<ul>
+  <li><%= wall.name %> <%= link_to 'Edit', edit_user_wallet_path(@user, wall) %> <%= link_to 'Destroy', user_wallet_path(@user, wall), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+</ul>
+<% end %>
+<%= link_to 'Создать новый кошелёк', new_user_wallet_path(@user) %>

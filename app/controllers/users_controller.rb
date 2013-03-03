@@ -19,6 +19,8 @@ class UsersController < InheritedResources::Base
   end
 
   def edit
+    @user = User.find(params[:id])
+    @wallet = @user.wallet
   end
 
   def update

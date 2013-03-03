@@ -19,6 +19,7 @@ group :default do
   gem 'simple_form'
   gem 'will_paginate'
   gem 'unicorn'
+  gem 'rails-erd'
 end
 
 group :development do

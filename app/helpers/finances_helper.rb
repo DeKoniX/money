@@ -1,12 +1,21 @@
 module FinancesHelper
-  def currentTablePag(table)
-    #current_user.finance.find_all_by_table(table).paginate(:page, params[:page])
-    current_user.finance.where(:table => table).paginate(:page => params[:page], :order => "updated_at DESC", :per_page => 15)
+  #def currentTablePag(table)
+    ##current_user.finance.find_all_by_table(table).paginate(:page, params[:page])
+    #current_user.finance.where(:table => table).paginate(:page => params[:page], :order => "updated_at DESC", :per_page => 15)
+  #end
+
+  #def currentTable(table)
+    ##current_user.finance.find_all_by_table(table).paginate(:page, params[:page])
+    #current_user.finance.where(:table => table)
+  #end
+
+  def current_finance(wallet)
+    @finance = wallet.finance.paginate(:page => params[:"page_#{wallet.id}"], :order => "updated_at DESC", :per_page => 15)
+    #@finance = wallet.finance
   end
 
-  def currentTable(table)
-    #current_user.finance.find_all_by_table(table).paginate(:page, params[:page])
-    current_user.finance.where(:table => table)
+  def sumTable(wallet)
+    current_finance(wallet).sum(:m)
   end
 
   # def countTable

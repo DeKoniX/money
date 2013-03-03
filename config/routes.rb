@@ -1,6 +1,8 @@
 Money::Application.routes.draw do
+  resources :users do
+    resources :wallets
+  end
   resources :finances
-  resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup', to: 'users#new'

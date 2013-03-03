@@ -18,7 +18,8 @@ class FinancesController < InheritedResources::Base
 
 
   def index
-    @finances = current_user.finance.paginate(page: params[:page], :per_page => 15)
+    #@finances = current_user.finance.paginate(page: params[:page], :per_page => 15)
+    @wallets = current_user.wallet
   end
 
   private

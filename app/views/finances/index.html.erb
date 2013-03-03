@@ -1,7 +1,7 @@
-<%#проверка пользователя%>
 <% if signed_in? %>
-  <% 1.upto(countTable) do |current| %>
-  <% if currentTable(current).count != 0 %>
+  <%= @wallets %>
+  <% @wallets.each do |wallet| %>
+    <%= link_to "Новое изменение, кошелёк #{wallet.name}", new_finance_path(wallet: wallet) %>
     <table class="fin">
       <thead>
         <tr>
@@ -12,19 +12,10 @@
           <th></th>
         </tr>
       </thead>
-        <%= will_paginate %>
-        <%= render currentTablePag(current) %>
+      <%= will_paginate current_finance(wallet), param_name: :"page_#{wallet.id}" %>
+        <%= render current_finance(wallet) %>
     </table>
-  <h2 class="money <%= ' minus' if sumTable(current) < 0 %>"><%= sumTable(current) %></h2>
+  <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>"><%= sumTable(wallet) %></h2>
 
+    <% end %>
   <% end %>
-  <br />
-
-  <%= link_to "Новое изменение, кошелёк №#{current}", new_finance_path(table: current) %>
-  <% end %>
-<% else %>
-  <%#если пользователя нет%>
-  <div class="no_user">
-    <h2><%= link_to "Залогинетесь пожалуйста", signin_path %></h2>
-  </div>
-<% end %>

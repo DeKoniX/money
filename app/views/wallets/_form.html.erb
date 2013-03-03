@@ -1,0 +1,16 @@
+<%= simple_form_for [@user, @wallets] do |f| %>
+  <% if @wallets.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wallets.errors.count, "error") %> prohibited this finance from being saved:</h2>
+
+      <ul>
+        <% @wallets.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :name %>
+  <%= f.button :submit %>
+<% end %>

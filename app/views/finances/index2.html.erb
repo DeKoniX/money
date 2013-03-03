@@ -1,0 +1,32 @@
+<%#проверка пользователя%>
+<% if signed_in? %>
+  <%#<%= @wallets.each do |wallet| %>%>
+    <%= @wallets %>
+  <%#<% 1.upto(countTable) do |current| %>
+  <%#<% if currentTable(current).count != 0 %>
+    <table class="fin">
+      <thead>
+        <tr>
+          <th>Количество</th>
+          <th>Описание</th>
+          <th>Когда</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+        <%= will_paginate %>
+        <%= render currentTablePag(current) %>
+    </table>
+  <h2 class="money <%= ' minus' if sumTable(current) < 0 %>"><%= sumTable(current) %></h2>
+
+  <%#<% end %>
+  <br />
+
+  <%= link_to "Новое изменение, кошелёк №#{current}", new_finance_path(table: current) %>
+  <%#<% end %>%>
+<% else %>
+  <%#если пользователя нет%>
+  <div class="no_user">
+    <h2><%= link_to "Залогинетесь пожалуйста", signin_path %></h2>
+  </div>
+<% end %>

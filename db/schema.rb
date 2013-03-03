@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130228195317) do
+ActiveRecord::Schema.define(:version => 20130303132249) do
 
   create_table "finances", :force => true do |t|
     t.decimal  "m"
@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(:version => 20130228195317) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.integer  "user_id"
-    t.integer  "wallet_id",  :default => 1
+    t.integer  "table",      :default => 1
+    t.integer  "wallet_id"
   end
 
   add_index "finances", ["user_id", "created_at"], :name => "index_finances_on_user_id_and_created_at"
