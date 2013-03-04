@@ -3,3 +3,5 @@
 /log/*.log
 /tmp
 /bin
+*.swp
+*.swo
