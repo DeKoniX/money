@@ -9,6 +9,7 @@ namespace :db do
         puts "№#{table+1}"
         wallet = user.wallet.create(:name => "Wallet #{table+1}")
         all_table = user.finance.find_all_by_table table+1
+        all_table = Finance.where(table: table+1, user_id: user.id)
         all_table.each do |finance|
           puts "Finance id = #{finance.id}"
           finance.update_column(:wallet_id, wallet.id)
