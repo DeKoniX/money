@@ -12,7 +12,7 @@
   <% end %>
 
   <%#<%= f.number_field :wallet_id, :value => params[:wallet], :type => "hidden" %>%>
-  <%= f.association :wallet, as: :radio_buttons, selected: params[:wallet] %>
+  <%= f.association :wallet, selected: params[:wallet_id], label: 'Кошелёк: ' %>
   <%= f.input :m, label: 'Сумма: ' %>
   <%= f.input :desc, label: 'Описание: ', as: :string  %>
   <%= f.button :submit %>

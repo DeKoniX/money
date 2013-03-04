@@ -12,5 +12,5 @@
 class Wallet < ActiveRecord::Base
   attr_accessible :name
   belongs_to :user
-  has_many :finance
+  has_many :finance, dependent: :destroy
 end

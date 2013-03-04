@@ -1,4 +1,5 @@
 class FinancesController < InheritedResources::Base
+  actions :edit, :new, :destroy, :create, :update, :index
   before_filter :signed_in_user
 
   def create
@@ -16,14 +17,11 @@ class FinancesController < InheritedResources::Base
     end
   end
 
-
   def index
-    #@finances = current_user.finance.paginate(page: params[:page], :per_page => 15)
     @wallets = current_user.wallet
   end
 
   private
-
   def signed_in_user
     unless signed_in?
       store_location

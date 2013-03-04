@@ -14,8 +14,7 @@ class UsersController < InheritedResources::Base
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    redirect_to users_url
+    destroy! { users_url }
   end
 
   def edit

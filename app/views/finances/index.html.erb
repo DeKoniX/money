@@ -1,7 +1,6 @@
 <% if signed_in? %>
-  <%= @wallets %>
   <% @wallets.each do |wallet| %>
-    <%= link_to "Новое изменение, кошелёк #{wallet.name}", new_finance_path(wallet: wallet) %>
+    <%= link_to "Новое изменение, кошелёк #{wallet.name}", new_finance_path(wallet_id: wallet) %>
     <table class="fin">
       <thead>
         <tr>
@@ -13,7 +12,15 @@
         </tr>
       </thead>
       <%= will_paginate current_finance(wallet), param_name: :"page_#{wallet.id}" %>
-        <%= render current_finance(wallet) %>
+        <% current_finance(wallet).each do |finance| %>
+          <tr>
+            <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
+            <td><%= finance.desc %></td>
+            <td><%= finance.updated_at %></td>
+            <td><%= link_to 'Edit', edit_finance_path(finance, wallet_id: wallet)%> </td>
+            <td><%= link_to 'Destroy', finance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
     </table>
   <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>"><%= sumTable(wallet) %></h2>
 

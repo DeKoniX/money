@@ -14,10 +14,10 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :tablecount
+  attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
   # has_many :finance, dependent: :destroy
-  has_many :wallet
+  has_many :wallet, dependent: :destroy
   has_many :finance, :through => :wallet
 
   before_save { |user| user.email = email.downcase }
@@ -28,15 +28,9 @@ class User < ActiveRecord::Base
               uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
-  validates :tablecount, presence: true, length: { minimum: 1, maximum: 4 }
 
   def create_remember_token
     self.update_column(:remember_token, SecureRandom.urlsafe_base64)
   end
 
-  def update_count_table(count)
-    if count < 5
-      self.update_column(:tablecount, count)
-    end
-  end
 end
