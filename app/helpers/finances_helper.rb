@@ -15,7 +15,7 @@ module FinancesHelper
   end
 
   def sumTable(wallet)
-    current_finance(wallet).sum(:m)
+    wallet.finance.sum(:m)
   end
 
   # def countTable
