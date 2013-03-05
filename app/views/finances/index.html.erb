@@ -15,7 +15,7 @@
           <tr>
             <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
             <td><%= finance.desc %></td>
-            <td><%= finance.updated_at %></td>
+            <td><%= finance.updated_at.to_date %></td>
             <td><%= link_to 'Редактировать', edit_finance_path(finance, wallet_id: wallet)%> </td>
             <td><%= link_to 'Удалить', finance, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
           </tr>
