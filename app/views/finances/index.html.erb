@@ -1,7 +1,7 @@
 <% if signed_in? %>
   <% @wallets.each do |wallet| %>
     <h4><%= link_to "Новое изменение, кошелёк '#{wallet.name}'", new_finance_path(wallet_id: wallet) %></h4>
-    <table class="fin">
+    <table class="table table-condensed table-striped">
       <thead>
         <tr>
           <th>Количество</th>

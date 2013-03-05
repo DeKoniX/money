@@ -19,16 +19,13 @@ body {
   h2.money.minus {
     color: red;
   }
-  table.fin {
-    width: 100%;
-    td {
-      border: 1px solid #eee;
-    }
-    td.money.minus {
-      color: red;
-    }
-    td.money {
-      color: green;
-    }
+  td {
+    border: 1px solid #eee;
+  }
+  td.money.minus {
+    color: red;
+  }
+  td.money {
+    color: green;
   }
 }
