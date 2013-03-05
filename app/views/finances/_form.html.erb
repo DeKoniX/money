@@ -1,4 +1,4 @@
-<%= simple_form_for @finance do |f| %>
+<%= simple_form_for @finance, :html => { :class => 'form-horizontal' } do |f| %>
   <% if @finance.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@finance.errors.count, "error") %> prohibited this finance from being saved:</h2>
@@ -11,9 +11,8 @@
     </div>
   <% end %>
 
-  <%#<%= f.number_field :wallet_id, :value => params[:wallet], :type => "hidden" %>%>
   <%= f.association :wallet, collection: current_user.wallet, selected: params[:wallet_id], label: 'Кошелёк: ' %>
   <%= f.input :m, label: 'Сумма: ' %>
   <%= f.input :desc, label: 'Описание: ', as: :string  %>
-  <%= f.button :submit %>
+  <%= f.submit "Сохранить" %>
 <% end %>
