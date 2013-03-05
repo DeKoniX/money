@@ -20,6 +20,8 @@ group :default do
   gem 'will_paginate'
   gem 'unicorn'
   gem 'rails-erd'
+  gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-will_paginate'
 end
 
 group :development do

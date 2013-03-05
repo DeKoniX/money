@@ -1,6 +1,6 @@
 <% if signed_in? %>
   <% @wallets.each do |wallet| %>
-    <%= link_to "Новое изменение, кошелёк #{wallet.name}", new_finance_path(wallet_id: wallet) %>
+    <h4><%= link_to "Новое изменение, кошелёк '#{wallet.name}'", new_finance_path(wallet_id: wallet) %></h4>
     <table class="fin">
       <thead>
         <tr>
@@ -11,7 +11,6 @@
           <th></th>
         </tr>
       </thead>
-      <%= will_paginate current_finance(wallet), param_name: :"page_#{wallet.id}" %>
         <% current_finance(wallet).each do |finance| %>
           <tr>
             <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
@@ -22,7 +21,9 @@
           </tr>
         <% end %>
     </table>
-  <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>"><%= sumTable(wallet) %></h2>
+      <%= will_paginate current_finance(wallet), param_name: :"page_#{wallet.id}" %>
 
+  <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>"><%= sumTable(wallet) %></h2>
+<hr>
     <% end %>
   <% end %>
