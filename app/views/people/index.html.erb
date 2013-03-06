@@ -1,0 +1,25 @@
+<% if signed_in? %>
+<h3>Должники</h3>
+<table class="table table-condensed table-striped">
+  <tr>
+    <th>Имя</th>
+    <th>Сумма</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% current_user.person.each do |person| %>
+  <tr>
+    <td><%= link_to person.name, person_debts_path(person) %></td>
+    <td class="money<%=  ' minus' if person.debt.sum(:m) < 0 %>"><%= person.debt.sum(:m) %></td>
+    <td><%= link_to 'Редактирование', edit_person_path(person) %></td>
+    <td><%= link_to 'Удаление', person_path(person), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<h3><%= link_to 'Новый должник', new_person_path %></h3>
+<% end -%>
