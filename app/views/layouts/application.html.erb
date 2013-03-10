@@ -41,10 +41,10 @@
         <% if signed_in? %>
         <ul class="nav">
           <li>
-            <%= link_to "Финансы", root_path %>
+            <%= link_to "Финансы (#{ sumFinances })", root_path %>
           </li>
           <li>
-            <%= link_to "Долги", people_path %>
+            <%= link_to "Долги (#{ sumDebts })", people_path %>
           </li>
           <li>
             <%= link_to "Настройки", edit_user_path(current_user) %>
@@ -67,7 +67,7 @@
 
   <div class="container-fluid">
     <div class="page-header visible-desktop">
-    
+
   </div>
     <%= bootstrap_flash %>
     <%= yield %>
