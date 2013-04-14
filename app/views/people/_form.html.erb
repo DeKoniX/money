@@ -1,5 +1,9 @@
 <%= simple_form_for @person, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.error_notification %>
   <%= f.input :name, label: 'Имя должника: ' %>
+  <%= simple_form_for [Person, @debts] do |f| %>
+    <%= f.input :m, label: 'Сумма: ' %>
+    <%= f.input :desc, label: 'Описание: ', as: :string %>
   <%= f.submit 'Сохранить' %>
+  <% end %>
 <% end %>
