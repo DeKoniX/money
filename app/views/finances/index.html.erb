@@ -1,4 +1,8 @@
 <% if signed_in? %>
+  <% if @wallets == [] %>
+    <h3>Извените. У вас кошельков сейчас нет! <%= link_to 'Создайте', new_user_wallet_path(current_user) %> новый кошелек</h3>
+  <% end %>
+
   <% @wallets.each do |wallet| %>
     <h4><%= link_to "Новое изменение, кошелёк '#{wallet.name}'", new_finance_path(wallet_id: wallet) %></h4>
     <table class="table table-condensed table-striped">
@@ -11,19 +15,19 @@
           <th></th>
         </tr>
       </thead>
-        <% current_finance(wallet).each do |finance| %>
-          <tr>
-            <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
-            <td><%= finance.desc %></td>
-            <td><%= finance.updated_at.to_date %></td>
-            <td><%= link_to 'Редактировать', edit_finance_path(finance, wallet_id: wallet)%> </td>
-            <td><%= link_to 'Удалить', finance, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-          </tr>
-        <% end %>
+      <% current_finance(wallet).each do |finance| %>
+        <tr>
+          <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
+          <td><%= finance.desc %></td>
+          <td><%= finance.updated_at.to_date %></td>
+          <td><%= link_to 'Редактировать', edit_finance_path(finance, wallet_id: wallet)%> </td>
+          <td><%= link_to 'Удалить', finance, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        </tr>
+      <% end %>
     </table>
-      <%= will_paginate current_finance(wallet), param_name: :"page_#{wallet.id}" %>
+    <%= will_paginate current_finance(wallet), param_name: :"page_#{wallet.id}" %>
 
-  <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>"><%= sumTable(wallet) %></h2>
-<hr>
-    <% end %>
+    <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>"><%= sumTable(wallet) %></h2>
+    <hr>
   <% end %>
+<% end %>
