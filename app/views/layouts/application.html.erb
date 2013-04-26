@@ -41,7 +41,7 @@
         <% if signed_in? %>
         <ul class="nav">
           <li>
-            <%= link_to "Финансы (#{ sumFinances })", root_path %>
+            <%= link_to "Финансы (#{ sumFinances })", finances_path %>
           </li>
           <li>
             <%= link_to "Долги (#{ sumDebts })", people_path %>
@@ -51,13 +51,12 @@
           </li>
         </ul>
         <div class="container-fluid login_btn pull-right">
-          <span class="label">Login: <%= current_user.name %></span>
-          <span class="label"><%= current_user.email %></span>
-          <span class="label"><%= link_to 'Выход', signout_path, method: "delete" %></span>
+          <span class="label">Login: <%= current_user.email %></span>
+          <span class="label"><%= link_to 'Выход', destroy_user_session_path, method: "delete" %></span>
         </div>
         <% else %>
         <div class="container-fluid login_btn pull-right">
-          <span class="label"><%= link_to 'Вход', signin_path %></span>
+          <span class="label"><%= link_to 'Вход', new_user_session_path %></span>
         </div>
         <% end %>
       </div>

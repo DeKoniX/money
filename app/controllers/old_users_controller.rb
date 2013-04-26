@@ -1,4 +1,4 @@
-class UsersController < InheritedResources::Base
+class OldUsersController < InheritedResources::Base
   before_filter :signed_in_user, only: [:edit, :update]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: [:destroy, :index, :show]

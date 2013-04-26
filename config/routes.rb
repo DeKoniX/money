@@ -1,22 +1,26 @@
 Money::Application.routes.draw do
 
+  #get "home/index"
+
+  devise_for :users
+
   resources :users do
     resources :wallets
   end
 
   resources :finances
-  
+
   resources :people do
     resources :debts
   end
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  match '/signup', to: 'users#new'
-  match '/signin', to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  #match '/signup', to: 'users#new'
+  #match '/signin', to: 'sessions#new'
+  #match '/signout', to: 'sessions#destroy', via: :delete
 
-  root :to => 'finances#index'
+  root :to => 'home#index'
 
 
   # The priority is based upon order of creation:

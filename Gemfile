@@ -10,6 +10,7 @@ end
 group :default do
   gem 'bcrypt-ruby'
   gem 'bootstrap-will_paginate'
+  gem 'devise'
   gem 'faker'
   gem 'inherited_resources'
   gem 'jquery-rails'
