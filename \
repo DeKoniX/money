@@ -16,8 +16,8 @@
         </tr>
       </thead>
       <% current_finance(wallet).each do |finance| %>
-        <tr class="<%= finance.m < 0 ? 'error' : 'success' %>">
-          <td class="money<%= ' minus 'if finance.m < 0 %>"><%= finance.m %></td>
+        <tr class='<%= (finance.m < 0) ? "error" : "success" %>'>
+          <td class="money<%=  if finance.m < 0 %>"><%= finance.m %></td>
           <td><%= finance.desc %></td>
           <td><%= finance.updated_at.to_date %></td>
           <td><%= link_to 'Редактировать', edit_finance_path(finance, wallet_id: wallet)%> </td>
