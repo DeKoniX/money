@@ -10,7 +10,7 @@
   </tr>
 
 <% current_user.person.each do |person| %>
-  <tr>
+  <tr class="<%= person.debt.sum(:m) < 0 ? 'error' : 'success' %>">
     <td><%= link_to person.name, person_debts_path(person) %></td>
     <td class="money<%=  ' minus' if person.debt.sum(:m) < 0 %>"><%= person.debt.sum(:m) %></td>
     <td><%= link_to 'Редактирование', person_debts_path(person) %></td>

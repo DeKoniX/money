@@ -11,7 +11,7 @@
 <h4><%= link_to 'Новое изменение', new_person_debt_path(@person) %></h4>
 
 <% @debt.each do |debt| %>
-  <tr>
+  <tr class="<%= debt.m < 0 ? 'error' : 'success' %>">
     <td><%= debt.updated_at.to_date %></td>
     <td class="money<%=  ' minus' if debt.m < 0 %>"><%= debt.m %></td>
     <td><%= debt.desc %></td>
