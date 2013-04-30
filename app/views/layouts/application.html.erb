@@ -46,9 +46,6 @@
           <li>
             <%= link_to "Долги (#{ sumDebts })", people_path %>
           </li>
-          <li>
-            <%= link_to "Настройки", edit_user_path(current_user) %>
-          </li>
         </ul>
         <div class="container-fluid login_btn pull-right">
           <span>Login: <%= link_to current_user.email, edit_user_registration_path %></span>

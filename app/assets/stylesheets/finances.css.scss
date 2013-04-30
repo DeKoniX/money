@@ -3,6 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
+  span.wallet {
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+  }
+  span.right {
+    float: right;
+  }
   .auth {
     text-align: center;
     width: 100%;

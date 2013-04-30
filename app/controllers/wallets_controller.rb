@@ -3,13 +3,13 @@ class WalletsController < InheritedResources::Base
   actions :edit, :new, :destroy, :create, :update
   belongs_to :user
   def create
-    create! { edit_user_path(@user) }
+    create! { root_path }
   end
   def update
-    update! { edit_user_path(@user) }
+    update! { root_path }
   end
   def destroy
-    destroy! { edit_user_path(@user) }
+    destroy! { root_path }
   end
   #def create
     #@user = User.find(params[:user_id])

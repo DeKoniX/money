@@ -1,10 +1,10 @@
 <% if signed_in? %>
-  <% if @wallets == [] %>
-    <h3>Извените. У вас кошельков сейчас нет! <%= link_to 'Создайте', new_user_wallet_path(current_user) %> новый кошелек</h3>
-  <% end %>
 
   <% @wallets.each do |wallet| %>
-    <h4><%= link_to "Новое изменение, кошелёк '#{wallet.name}'", new_finance_path(wallet_id: wallet) %></h4>
+    <span class="wallet">
+      <%= link_to "Новое изменение, кошелёк '#{wallet.name}'", new_finance_path(wallet_id: wallet) %></span>
+    <span class="right"><%= link_to "Редактировать ", edit_user_wallet_path(current_user, wallet) %>
+      <%= link_to (image_tag 'delete.png'), user_wallet_path(current_user, wallet), method: :delete, data: { confirm: 'Вы уверены? (Это полностью сотрет ваши данные по данному кошельку)' } %></span>
     <table class="table table-condensed table-striped">
       <thead>
         <tr>
@@ -29,5 +29,10 @@
 
     <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>"><%= sumTable(wallet) %></h2>
     <hr>
+  <% end %>
+  <% if @wallets == [] %>
+    <h3>Извените. У вас кошельков сейчас нет! <%= link_to 'Создайте', new_user_wallet_path(current_user) %> новый кошелек</h3>
+  <% else %>
+    <h4><%= link_to "Создать новый кошелёк.", new_user_wallet_path(current_user) %></h4>
   <% end %>
 <% end %>
