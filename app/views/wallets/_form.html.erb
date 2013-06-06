@@ -1,4 +1,4 @@
-<%= simple_form_for [@user, @wallets], :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for [@user, @wallets], :html => { :class => 'form-horizontal' }, remote: true do |f| %>
   <%= f.input :name, label: "Имя кошелька" %>
   <%= f.submit "Сохранить" %>
 <% end %>
