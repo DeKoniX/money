@@ -41,7 +41,7 @@
         <% if signed_in? %>
         <ul class="nav">
           <li>
-            <%= link_to "Финансы (#{ sumFinances })", root_path %>
+            <%= link_to "Финансы (#{ sumFinances })", root_path, class: "all_finances" %>
           </li>
           <li>
             <%= link_to "Долги (#{ sumDebts })", people_path %>

@@ -1,0 +1,25 @@
+<h4><%= link_to "Новое изменение, кошелёк '#{wallet.name}'", new_finance_path(wallet_id: wallet), remote: true %></h4>
+<table class="table table-condensed table-striped">
+  <thead>
+    <tr>
+      <th>Количество</th>
+      <th>Описание</th>
+      <th>Когда</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% current_finance(wallet).each do |finance| %>
+    <tr>
+      <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
+      <td><%= finance.desc %></td>
+      <td><%= finance.updated_at.to_date %></td>
+      <td><%= link_to 'Редактировать', edit_finance_path(finance, wallet_id: wallet), remote: true, class: 'edit' %> </td>
+      <td><%= link_to 'Удалить', finance, method: :delete, data: { confirm: 'Вы уверены?' }, remote: true %></td>
+    </tr>
+  <% end %>
+</table>
+<div class="form_wallet_<%= wallet.id %>"></div>
+<%= will_paginate current_finance(wallet), param_name: :"page_#{wallet.id}" %>
+<h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>"><%= sumTable(wallet) %></h2>
+<hr>
