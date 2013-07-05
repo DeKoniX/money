@@ -44,7 +44,7 @@
             <%= link_to "Финансы (#{ sumFinances })", root_path, class: "all_finances" %>
           </li>
           <li>
-            <%= link_to "Долги (#{ sumDebts })", people_path %>
+            <%= link_to "Долги (#{ sumDebts })", people_path, class: "all_debts" %>
           </li>
           <li>
             <%= link_to "Настройки", edit_user_path(current_user) %>

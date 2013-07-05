@@ -1,11 +1,12 @@
 class DebtsController < InheritedResources::Base
   defaults :resource_class => Debt, :collection_name => 'debt', :instance_name => 'debts'
+  before_filter :signed_in_user
 	belongs_to :person
 
 	before_filter :corrent_user
 
 	def index
-		@person = Person.find(params[:person_id]) 
+		@person = Person.find(params[:person_id])
 		@debt = @person.debt.paginate(:page => params[:page])
 	end
 
