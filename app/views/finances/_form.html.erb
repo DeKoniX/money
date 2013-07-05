@@ -1,16 +1,4 @@
 <%= simple_form_for @finance, :html => { :class => 'form-horizontal' }, remote: true do |f| %>
-  <% if @finance.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@finance.errors.count, "error") %> prohibited this finance from being saved:</h2>
-
-      <ul>
-        <% @finance.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <%= f.association :wallet, collection: current_user.wallet, selected: params[:wallet_id], label: 'Кошелёк: ' %>
   <%= f.input :m, label: 'Сумма: ' %>
   <%= f.input :desc, label: 'Описание: ', as: :string  %>

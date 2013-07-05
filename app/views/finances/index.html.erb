@@ -1,7 +1,7 @@
-<% if signed_in? %>
-  <% if @wallets == [] %>
-    <h3>Извените. У вас кошельков сейчас нет! <%= link_to 'Создайте', new_user_wallet_path(current_user) %> новый кошелек</h3>
-  <% end %>
+<% if @wallets == [] %>
+  <h3>Извените. У вас кошельков сейчас нет! <%= link_to 'Создайте', new_user_wallet_path(current_user), remote: true %> новый кошелек</h3>
+  <div class="form"></div>
+<% else %>
   <% @wallets.each do |wallet| %>
     <div class="wallet_<%= wallet.id %>">
       <%= render partial: "wallet", object: wallet %>
