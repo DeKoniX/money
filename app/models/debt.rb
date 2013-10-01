@@ -1,5 +1,4 @@
 class Debt < ActiveRecord::Base
-  attr_accessible :desc, :m, :person_id
   belongs_to :person
 
   validates :desc, length: { maximum: 140 }

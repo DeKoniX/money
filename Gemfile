@@ -13,7 +13,7 @@ group :default do
   gem 'faker'
   gem 'inherited_resources'
   gem 'jquery-rails'
-  gem 'rails', '3.2.13'
+  gem 'rails', '4.0.0'
   gem 'rails-erd'
   gem 'russian'
   gem 'simple_form'

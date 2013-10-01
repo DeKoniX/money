@@ -21,6 +21,10 @@ class FinancesController < InheritedResources::Base
     @wallets = current_user.wallet
   end
 
+  def permitted_params
+      params.permit(:finance => [:desc, :m, :wallet_id])
+  end
+
   private
   def signed_in_user
     unless signed_in?

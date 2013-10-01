@@ -14,8 +14,6 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
-  has_secure_password
   has_many :wallet, dependent: :destroy
   has_many :finance, :through => :wallet
 

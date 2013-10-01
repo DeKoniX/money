@@ -5,16 +5,16 @@ Money::Application.routes.draw do
   end
 
   resources :finances
-  
+
   resources :people do
     resources :debts
   end
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  match '/signup', to: 'users#new'
-  match '/signin', to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  get '/signup', to: 'users#new'
+  get '/signin', to: 'sessions#new'
+  get '/signout', to: 'sessions#destroy', via: :delete
 
   root :to => 'finances#index'
 

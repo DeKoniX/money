@@ -1,5 +1,4 @@
 class PeopleController < InheritedResources::Base
-
   before_filter :corrent_user, only: [:edit, :update, :destroy]
 
   def new
@@ -22,6 +21,10 @@ class PeopleController < InheritedResources::Base
 
   def destroy
     destroy! { people_path }
+  end
+
+  def permitted_params
+      params.permit(:person => [:name, :user_id])
   end
 
   private

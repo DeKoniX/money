@@ -13,8 +13,6 @@
 #
 
 class Finance < ActiveRecord::Base
-  attr_accessible :desc, :m, :wallet_id
-  #belongs_to :user
   belongs_to :wallet
 
   validates :desc, length: { maximum: 140 }

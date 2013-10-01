@@ -36,8 +36,11 @@ class UsersController < InheritedResources::Base
     @users = User.paginate(page: params[:page])
   end
 
-  private
+  def permitted_params
+      params.permit(:user => [:email, :name, :password, :password_confirmation])
+  end
 
+  private
   def signed_in_user
     unless signed_in?
       store_location
