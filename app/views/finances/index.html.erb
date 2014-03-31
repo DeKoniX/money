@@ -3,28 +3,64 @@
     <h3>Извените. У вас кошельков сейчас нет! <%= link_to 'Создайте', new_user_wallet_path(current_user) %> новый кошелек</h3>
   <% end %>
 
+
   <% @wallets.each do |wallet| %>
     <h4><%= link_to "Новое изменение, кошелёк '#{wallet.name}'", new_finance_path(wallet_id: wallet) %></h4>
-    <table class="table table-condensed table-striped">
-      <thead>
-        <tr>
-          <th>Количество</th>
-          <th>Описание</th>
-          <th>Когда</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <% current_finance(wallet).each do |finance| %>
-        <tr>
-          <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
-          <td><%= finance.desc %></td>
-          <td><%= finance.updated_at.to_date %></td>
-          <td><%= link_to 'Редактировать', edit_finance_path(finance, wallet_id: wallet)%> </td>
-          <td><%= link_to 'Удалить', finance, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-        </tr>
-      <% end %>
-    </table>
+    <% if @wallets.size > 1 %>
+      <div class="center"><span class="label"> <%= wallet.name %> </span></div>
+    <% end %>
+    <div class="row">
+      <div class="span6">
+        <div class="center"><h5><%= link_to "Доход", "#" %></h5></div>
+        <table class="table table-condensed table-striped">
+          <thead>
+            <tr>
+              <th>Количество</th>
+              <th>Описание</th>
+              <th>Когда</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+            <% current_finance(wallet).each do |finance| %>
+              <% if finance.m > 0 %>
+                <tr>
+                  <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
+                  <td><%= finance.desc %></td>
+                  <td><%= finance.updated_at.to_date %></td>
+                  <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet), class: "icon-edit" %></td>
+                  <td><%= link_to '', finance, method: :delete, class: "icon-remove", data: { confirm: 'Вы уверены?' } %></td>
+                </tr>
+              <% end %>
+            <% end %>
+        </table>
+      </div>
+      <div class="span6">
+        <div class="center"><h5><%= link_to "Расход", "#" %></h5></div>
+        <table class="table table-condensed table-striped">
+          <thead>
+            <tr>
+              <th>Количество</th>
+              <th>Описание</th>
+              <th>Когда</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <% current_finance(wallet).each do |finance| %>
+            <% if finance.m < 0 %>
+              <tr>
+                <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
+                <td><%= finance.desc %></td>
+                <td><%= finance.updated_at.to_date %></td>
+                <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet), class: "icon-edit" %></td>
+                <td><%= link_to '', finance, method: :delete, class: "icon-remove", data: { confirm: 'Вы уверены?' } %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
     <%= will_paginate current_finance(wallet), param_name: :"page_#{wallet.id}" %>
 
     <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>"><%= sumTable(wallet) %></h2>
