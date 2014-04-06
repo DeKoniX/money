@@ -65,7 +65,9 @@
       </div>
     </div>
     <%= will_paginate current_finance(wallet), param_name: :"page_#{wallet.id}" %>
-    <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>">Остаток: <%= sumTable(wallet) %>р.</h2>
+    <% if wallet.finance.size >= 1 %>
+      <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>">Остаток: <%= sumTable(wallet) %>р.</h2>
+    <% end %>
     <hr>
   <% end %>
 <% end %>

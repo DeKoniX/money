@@ -11,7 +11,7 @@
   <!--[if lt IE 9]>
   <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
   <![endif]-->
-  
+
   <%= stylesheet_link_tag "application", :media => "all" %>
   <!-- For third-generation iPad with high-resolution Retina display: -->
   <!-- Size should be 144 x 144 pixels -->
@@ -51,8 +51,8 @@
             </li>
           </ul>
           <div class="container-fluid login_btn pull-right">
-            <span class="label">Login: <%= current_user.name %></span>
-            <span class="label"><%= current_user.email %></span>
+            <span class="label">Имя пользователя: <%= current_user.name %></span>
+            <span class="label">EMail: <%= current_user.email %></span>
             <span class="label"><%= link_to 'Выход', signout_path, method: "delete" %></span>
           </div>
           <% else %>
@@ -72,7 +72,7 @@
       <%= bootstrap_flash %>
       <%= yield %>
       <footer>
-        <p>&copy; DeKoniX 2013</p>
+        <p>&copy;DeKoniX 2013</p>
       </footer>
     </div>
     <!-- /container -->
