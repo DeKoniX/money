@@ -5,65 +5,67 @@
 
 
   <% @wallets.each do |wallet| %>
-    <h4><%= link_to "Новое изменение, кошелёк '#{wallet.name}'", new_finance_path(wallet_id: wallet) %></h4>
     <% if @wallets.size > 1 %>
       <div class="center"><span class="label"> <%= wallet.name %> </span></div>
     <% end %>
     <div class="row">
       <div class="span6">
-        <div class="center"><h5><%= link_to "Доход", "#" %></h5></div>
-        <table class="table table-condensed table-striped">
-          <thead>
-            <tr>
-              <th>Количество</th>
-              <th>Описание</th>
-              <th>Когда</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
+        <div class="center"><h5><%= link_to "Добавить Доход", new_finance_path(wallet_id: wallet, plus: true) %></h5></div>
+        <% if wallet.finance.size >= 1 and finplus(wallet) == true%>
+          <table class="table table-condensed table-striped">
+            <thead>
+              <tr>
+                <th>Количество</th>
+                <th>Описание</th>
+                <th>Когда</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
             <% current_finance(wallet).each do |finance| %>
-              <% if finance.m > 0 %>
+              <% if finance.plus == true %>
                 <tr>
                   <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
                   <td><%= finance.desc %></td>
                   <td><%= finance.updated_at.to_date %></td>
-                  <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet), class: "icon-edit" %></td>
+                  <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet, plus: true), class: "icon-edit" %></td>
                   <td><%= link_to '', finance, method: :delete, class: "icon-remove", data: { confirm: 'Вы уверены?' } %></td>
                 </tr>
               <% end %>
             <% end %>
-        </table>
+          </table>
+        <% end %>
       </div>
       <div class="span6">
-        <div class="center"><h5><%= link_to "Расход", "#" %></h5></div>
-        <table class="table table-condensed table-striped">
-          <thead>
-            <tr>
-              <th>Количество</th>
-              <th>Описание</th>
-              <th>Когда</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <% current_finance(wallet).each do |finance| %>
-            <% if finance.m < 0 %>
+        <div class="center"><h5><%= link_to "Добавить Расход", new_finance_path(wallet_id: wallet, plus: false) %></h5></div>
+        <% if wallet.finance.size >= 1 and finminus(wallet) == true %>
+          <table class="table table-condensed table-striped">
+            <thead>
               <tr>
-                <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
-                <td><%= finance.desc %></td>
-                <td><%= finance.updated_at.to_date %></td>
-                <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet), class: "icon-edit" %></td>
-                <td><%= link_to '', finance, method: :delete, class: "icon-remove", data: { confirm: 'Вы уверены?' } %></td>
+                <th>Количество</th>
+                <th>Описание</th>
+                <th>Когда</th>
+                <th></th>
+                <th></th>
               </tr>
+            </thead>
+            <% current_finance(wallet).each do |finance| %>
+              <% if finance.plus == false %>
+                <tr>
+                  <td class="money minus"><%= finance.m %></td>
+                  <td><%= finance.desc %></td>
+                  <td><%= finance.updated_at.to_date %></td>
+                  <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet, plus: false), class: "icon-edit" %></td>
+                  <td><%= link_to '', finance, method: :delete, class: "icon-remove", data: { confirm: 'Вы уверены?' } %></td>
+                </tr>
+              <% end %>
             <% end %>
-          <% end %>
-        </table>
+          </table>
+        <% end %>
       </div>
     </div>
     <%= will_paginate current_finance(wallet), param_name: :"page_#{wallet.id}" %>
-
-    <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>"><%= sumTable(wallet) %></h2>
+    <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>">Остаток: <%= sumTable(wallet) %>р.</h2>
     <hr>
   <% end %>
 <% end %>

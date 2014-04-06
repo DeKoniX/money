@@ -4,11 +4,16 @@ class FinancesController < InheritedResources::Base
 
   def create
     @finance = current_user.finance.build(params[:finance])
+    @finance.plus = params[:plus]
     if @finance.save
       redirect_to root_url
     else
       render 'new'
     end
+  end
+
+  def new
+    new!
   end
 
   def update

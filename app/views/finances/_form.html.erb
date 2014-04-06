@@ -12,7 +12,14 @@
   <% end %>
 
   <%= f.association :wallet, collection: current_user.wallet, selected: params[:wallet_id], label: 'Кошелёк: ' %>
-  <%= f.input :m, label: 'Сумма: ' %>
+  <% unless params[:plus].nil? %>
+    <% if params[:plus] == 'true' %>
+      <%= f.input :m, label: 'Сумма дохода: ' %>
+    <% elsif params[:plus] == 'false' %>
+      <%= f.input :m, label: 'Сумма расхода: ' %>
+    <% end %>
+  <% end %>
   <%= f.input :desc, label: 'Описание: ', as: :string  %>
+  <%= hidden_field_tag :plus, params[:plus] %>
   <%= f.submit "Сохранить" %>
 <% end %>

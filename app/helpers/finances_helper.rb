@@ -1,12 +1,12 @@
 module FinancesHelper
   #def currentTablePag(table)
-    ##current_user.finance.find_all_by_table(table).paginate(:page, params[:page])
-    #current_user.finance.where(:table => table).paginate(:page => params[:page], :order => "updated_at DESC", :per_page => 15)
+  ##current_user.finance.find_all_by_table(table).paginate(:page, params[:page])
+  #current_user.finance.where(:table => table).paginate(:page => params[:page], :order => "updated_at DESC", :per_page => 15)
   #end
 
   #def currentTable(table)
-    ##current_user.finance.find_all_by_table(table).paginate(:page, params[:page])
-    #current_user.finance.where(:table => table)
+  ##current_user.finance.find_all_by_table(table).paginate(:page, params[:page])
+  #current_user.finance.where(:table => table)
   #end
 
   def current_finance(wallet)
@@ -15,7 +15,33 @@ module FinancesHelper
   end
 
   def sumTable(wallet)
-    wallet.finance.sum(:m)
+    summ = 0
+    wallet.finance.each do |f|
+      if f.plus == true
+        summ += f.m
+      elsif f.plus == false
+        summ -= f.m
+      end
+    end
+    return summ
+  end
+
+  def finplus(wallet)
+    wallet.finance.each do |f|
+      if f.plus == true
+        return true
+      end
+    end
+    return false
+  end
+
+  def finminus(wallet)
+    wallet.finance.each do |f|
+      if f.plus == false
+        return true
+      end
+    end
+    return false
   end
 
   # def countTable
