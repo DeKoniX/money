@@ -43,6 +43,9 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    capistrano-unicorn (0.2.0)
+      capistrano (< 3.0)
+    capistrano_colors (0.5.5)
     choice (0.1.6)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -181,6 +184,8 @@ DEPENDENCIES
   bcrypt-ruby
   bootstrap-will_paginate
   capistrano
+  capistrano-unicorn
+  capistrano_colors
   coffee-rails
   faker
   inherited_resources

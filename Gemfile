@@ -27,6 +27,8 @@ group :development do
   gem 'annotate'
   gem 'capistrano'
   gem 'rvm-capistrano'
+  gem 'capistrano_colors'
+  gem 'capistrano-unicorn'
 end
 
 group :test do
