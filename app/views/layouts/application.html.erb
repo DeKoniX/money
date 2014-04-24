@@ -32,53 +32,53 @@
   <!-- For all other devices -->
   <!-- Size should be 32 x 32 pixels -->
   <%= favicon_link_tag 'favicon.ico', :rel =>'shortcut icon' %></head>
-<body>
+  <body>
 
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <%= link_to "Ваши финансы", root_path, class:"brand" %>
-        <% if signed_in? %>
-        <ul class="nav">
-          <li>
-            <%= link_to "Финансы (#{ sumFinances })", root_path %>
-          </li>
-          <li>
-            <%= link_to "Долги (#{ sumDebts })", people_path %>
-          </li>
-          <li>
-            <%= link_to "Настройки", edit_user_path(current_user) %>
-          </li>
-        </ul>
-        <div class="container-fluid login_btn pull-right">
-          <span class="label">Login: <%= current_user.name %></span>
-          <span class="label"><%= current_user.email %></span>
-          <span class="label"><%= link_to 'Выход', signout_path, method: "delete" %></span>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <%= link_to "Ваши финансы", root_path, class:"brand" %>
+          <% if signed_in? %>
+          <ul class="nav">
+            <li>
+              <%= link_to "Финансы (#{ sumFinances })", root_path %>
+            </li>
+            <li>
+              <%= link_to "Долги (#{ sumDebts })", people_path %>
+            </li>
+            <li>
+              <%= link_to "Настройки", edit_user_path(current_user) %>
+            </li>
+          </ul>
+          <div class="container-fluid login_btn pull-right">
+            <span class="label">Имя пользователя: <%= current_user.name %></span>
+            <span class="label">EMail: <%= current_user.email %></span>
+            <span class="label"><%= link_to 'Выход', signout_path, method: "delete" %></span>
+          </div>
+          <% else %>
+          <div class="container-fluid login_btn pull-right">
+            <span class="label"><%= link_to 'Вход', signin_path %></span>
+          </div>
+          <% end %>
         </div>
-        <% else %>
-        <div class="container-fluid login_btn pull-right">
-          <span class="label"><%= link_to 'Вход', signin_path %></span>
-        </div>
-        <% end %>
       </div>
     </div>
-  </div>
-  <div></div>
+    <div></div>
 
-  <div class="container-fluid">
-    <div class="page-header visible-desktop">
+    <div class="container-fluid">
+      <div class="page-header visible-desktop">
 
-  </div>
-    <%= bootstrap_flash %>
-    <%= yield %>
-    <footer>
-      <p>&copy; DeKoniX 2013</p>
-    </footer>
-  </div>
-  <!-- /container -->
+      </div>
+      <%= bootstrap_flash %>
+      <%= yield %>
+      <footer>
+        <p>&copy;DeKoniX 2013</p>
+      </footer>
+    </div>
+    <!-- /container -->
 
-  <!-- Javascripts
+    <!-- Javascripts
     ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <%= javascript_include_tag "application" %></body>
-</html>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %></body>
+    </html>

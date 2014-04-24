@@ -4,11 +4,16 @@ class FinancesController < InheritedResources::Base
 
   def create
     @finance = current_user.finance.build(params[:finance])
+    @finance.plus = params[:plus]
     if @finance.save
       redirect_to root_url
     else
       render 'new'
     end
+  end
+
+  def new
+    new!
   end
 
   def update
@@ -25,7 +30,7 @@ class FinancesController < InheritedResources::Base
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: "Please sign in."
+      redirect_to signin_url, notice: "Вам необходимо войти в систему или зарегистрироваться."
     end
   end
 end

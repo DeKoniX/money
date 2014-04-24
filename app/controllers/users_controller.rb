@@ -7,7 +7,7 @@ class UsersController < InheritedResources::Base
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      @user.wallet.create!(name: "Wallet")
+      @user.wallet.create!(name: "Мой кошелёк")
       redirect_to @user
     else
       render 'new'
@@ -41,7 +41,7 @@ class UsersController < InheritedResources::Base
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: "Please sign in."
+      redirect_to signin_url, notice: "Вам необходимо войти в систему или зарегистрироваться."
     end
   end
 
