@@ -1,28 +1,9 @@
-<table class="table table-condensed table-striped">
-  <tr>
-    <th>Когда</th>
-    <th>Сколько</th>
-    <th>Описание</th>
-    <th>Кто</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <h3><%= @person.name %></h3>
-<h4><%= link_to 'Новое изменение', new_person_debt_path(@person) %></h4>
-
-<% @debt.each do |debt| %>
-  <tr>
-    <td><%= debt.updated_at.to_date %></td>
-    <td class="money<%=  ' minus' if debt.m < 0 %>"><%= debt.m %></td>
-    <td><%= debt.desc %></td>
-    <td><%= @person.name %></td>
-    <td><%= link_to 'Редактирование', edit_person_debt_path(@person, debt) %></td>
-    <td><%= link_to 'Удаление', person_debt_path(@person, debt), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<%= will_paginate @debt %>
+<h3><%= @person.name %></h3>
+<h4><%= link_to 'Новое изменение', new_person_debt_path(@person), remote: true %></h4>
+<div class="form"></div>
+<div class="table">
+  <%= render 'debt' %>
+</div>
 <h2 class="money <%= ' minus' if sumDebt(@person) < 0 %>"><%= sumDebt(@person) %></h2>
 
 <h4><%= link_to 'Вернуться к должникам', people_path %></h4>

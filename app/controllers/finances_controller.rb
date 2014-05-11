@@ -1,20 +1,22 @@
 class FinancesController < InheritedResources::Base
   actions :edit, :new, :destroy, :create, :update, :index
   before_filter :signed_in_user
+  respond_to :js
 
   def create
     @finance = current_user.finance.build(params[:finance])
     @finance.plus = params[:plus]
-    if @finance.save
-      redirect_to root_url
-    else
-      render 'new'
-    end
+    @finance.save!
+    # if @finance.save
+    #   redirect_to root_url
+    # else
+    #   render 'new'
+    # end
   end
 
-  def new
-    new!
-  end
+  # def new
+    # new!
+  # end
 
   def update
     super do |format|

@@ -1,0 +1,4 @@
+<%#$('.form').hide();%>
+// $('.form').hide();
+$('.wallet_<%= @finance.wallet.id %>').html('<%= j render partial: "wallet", object: @finance.wallet %>');
+// $('.all_finances').html('<%= link_to "Финансы (#{ sumFinances })", root_path, class: "all_finances" %>');

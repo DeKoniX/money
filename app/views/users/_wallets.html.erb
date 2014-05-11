@@ -1,0 +1,9 @@
+<% wallets.each do |wall| %>
+  <ul>
+    <li>
+      <%= wall.name %>
+      <%= link_to 'Редактировать', edit_user_wallet_path(@user, wall), remote: true %>
+      <%= link_to 'Удалить', user_wallet_path(@user, wall), method: :delete, data: { confirm: 'Вы уверены? (Это полностью сотрет ваши данные по данному кошельку)' }, remote: true %>
+    </li>
+  </ul>
+<% end %>

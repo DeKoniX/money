@@ -1,0 +1,63 @@
+<div class="form_wallet_<%= wallet.id %>"></div>
+
+<div class="row">
+  <div class="span6">
+    <div class="center"><h5><%= link_to "Добавить Доход", new_finance_path(wallet_id: wallet, plus: true), remote: true %></h5></div>
+    <% if wallet.finance.size >= 1 and finplus(wallet) == true%>
+      <table class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th>Количество</th>
+            <th>Описание</th>
+            <th>Когда</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <% current_finance(wallet).each do |finance| %>
+          <% if finance.plus == true %>
+            <tr>
+              <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
+              <td><%= finance.desc %></td>
+              <td><%= finance.updated_at.to_date %></td>
+              <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet, plus: true), remote: true, class: "icon-edit" %></td>
+              <td><%= link_to '', finance, method: :delete, class: "icon-remove", data: { confirm: 'Вы уверены?' }, remote: true %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+  <div class="span6">
+    <div class="center"><h5><%= link_to "Добавить Расход", new_finance_path(wallet_id: wallet, plus: false), remote: true %></h5></div>
+    <% if wallet.finance.size >= 1 and finminus(wallet) == true %>
+      <table class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th>Количество</th>
+            <th>Описание</th>
+            <th>Когда</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <% current_finance(wallet).each do |finance| %>
+          <% if finance.plus == false %>
+            <tr>
+              <td class="money minus"><%= finance.m %></td>
+              <td><%= finance.desc %></td>
+              <td><%= finance.updated_at.to_date %></td>
+              <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet, plus: false), remote: true, class: "icon-edit" %></td>
+              <td><%= link_to '', finance, method: :delete, class: "icon-remove", data: { confirm: 'Вы уверены?' }, remote: true %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+</div>
+<%= will_paginate current_finance(wallet), param_name: :"page_#{wallet.id}" %>
+<% if wallet.finance.size >= 1 %>
+  <h2 class="money <%= ' minus' if sumTable(wallet) < 0 %>">Остаток: <%= sumTable(wallet) %>р.</h2>
+<% end %>
+<hr>

@@ -1,0 +1,24 @@
+<table class="table table-condensed table-striped">
+  <tr>
+    <th>Когда</th>
+    <th>Сколько</th>
+    <th>Описание</th>
+    <th>Кто</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @debt.each do |debt| %>
+    <tr>
+      <td><%= debt.updated_at.to_date %></td>
+      <td class="money<%=  ' minus' if debt.m < 0 %>"><%= debt.m %></td>
+      <td><%= debt.desc %></td>
+      <td><%= @person.name %></td>
+      <td><%= link_to 'Редактирование', edit_person_debt_path(@person, debt), remote: true %></td>
+      <td><%= link_to 'Удаление', person_debt_path(@person, debt), method: :delete, data: { confirm: 'Вы уверены?' }, remote: true %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @debt %>
+

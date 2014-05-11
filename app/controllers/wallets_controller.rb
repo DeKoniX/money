@@ -2,6 +2,8 @@ class WalletsController < InheritedResources::Base
   defaults :resource_class => Wallet, :collection_name => 'wallet', :instance_name => 'wallets'
   actions :edit, :new, :destroy, :create, :update
   belongs_to :user
+  respond_to :js
+
   def create
     create! { edit_user_path(@user) }
   end

@@ -1,0 +1,6 @@
+$('.form').hide();
+$('.wallets').html('<%= j render partial: "users/wallets", object: Wallet.all %>');
+console.log(location);
+if (location.pathname == '/') {
+  location.reload();
+}

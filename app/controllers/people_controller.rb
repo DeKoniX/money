@@ -1,6 +1,6 @@
 class PeopleController < InheritedResources::Base
-
-  before_filter :corrent_user, only: [:edit, :update, :destroy]
+  before_filter :corrent_user, only: [:edit, :destroy]
+  respond_to :js
 
   def new
     @debts = Debt.new
@@ -8,16 +8,16 @@ class PeopleController < InheritedResources::Base
   end
 
   def create
-    create! { people_path }
+    @person = Person.new(params[:person])
     @person.user_id = current_user.id
     @person.save!
     @debt = Debt.new(params[:debt])
     @debt.person_id = @person.id
     @debt.save!
-  end
-
-  def update
-    update! { people_path }
+    super do |format|
+      format.html { redirect_to people_path }
+      format.js
+    end
   end
 
   def destroy
