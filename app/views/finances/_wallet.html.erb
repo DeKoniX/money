@@ -20,8 +20,8 @@
               <td class="money<%=  ' minus' if finance.m < 0 %>"><%= finance.m %></td>
               <td><%= finance.desc %></td>
               <td><%= finance.updated_at.to_date %></td>
-              <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet, plus: true), remote: true, class: "icon-edit" %></td>
-              <td><%= link_to '', finance, method: :delete, class: "icon-remove", data: { confirm: 'Вы уверены?' }, remote: true %></td>
+              <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet, plus: true), remote: true, class: "icon-edit", title: "Редактировать" %></td>
+              <td><%= link_to '', finance, method: :delete, class: "icon-remove", data: { confirm: "Удалить доход #{ finance.m } р. ?" }, remote: true, title: "Удалить" %></td>
             </tr>
           <% end %>
         <% end %>
@@ -47,8 +47,8 @@
               <td class="money minus"><%= finance.m %></td>
               <td><%= finance.desc %></td>
               <td><%= finance.updated_at.to_date %></td>
-              <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet, plus: false), remote: true, class: "icon-edit" %></td>
-              <td><%= link_to '', finance, method: :delete, class: "icon-remove", data: { confirm: 'Вы уверены?' }, remote: true %></td>
+              <td><%= link_to '', edit_finance_path(finance, wallet_id: wallet, plus: false), remote: true, class: "icon-edit", title: "Редактировать" %></td>
+              <td><%= link_to '', finance, method: :delete, class: "icon-remove", data: { confirm: "Удалить расход #{ finance.m } р. ?" }, remote: true, title: "Удалить" %></td>
             </tr>
           <% end %>
         <% end %>
