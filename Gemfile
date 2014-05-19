@@ -21,6 +21,7 @@ group :default do
   gem 'twitter-bootstrap-rails'
   gem 'unicorn'
   gem 'will_paginate'
+  gem 'bootstrap_notify', :git => "https://github.com/jclay/bootstrap-notify-gem.git"
 end
 
 group :development do
@@ -39,4 +40,3 @@ group :production do
   gem 'activerecord-postgresql-adapter'
   gem 'pg'
 end
-

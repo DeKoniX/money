@@ -18,6 +18,6 @@ class Finance < ActiveRecord::Base
   belongs_to :wallet
 
   validates :desc, length: { maximum: 140 }
-  validates :m, presence: true
+  validates :m, numericality: true
   validates :wallet_id, presence: true
 end

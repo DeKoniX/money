@@ -6,12 +6,19 @@ class FinancesController < InheritedResources::Base
   def create
     @finance = current_user.finance.build(params[:finance])
     @finance.plus = params[:plus]
-    @finance.save!
-    # if @finance.save
-    #   redirect_to root_url
-    # else
-    #   render 'new'
-    # end
+    respond_to do |format|
+      if @finance.save
+        format.html { redirect_to root_url }
+        format.json { render json: @finance, status: :created, location: @finance}
+        format.js
+        #redirect_to root_url
+      else
+        format.html { render action: "index" }
+        format.json { render json: @finance.errors, status: :unprocessable_entity }
+        format.js { render action: "new" }
+        # render 'new'
+      end
+    end
   end
 
   # def new
@@ -20,7 +27,11 @@ class FinancesController < InheritedResources::Base
 
   def update
     super do |format|
-      format.html { redirect_to root_url }
+      if @finance.save
+        format.html { redirect_to root_url }
+      else
+        format.js { render action: "edit" }
+      end
     end
   end
 

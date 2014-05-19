@@ -1,2 +1,5 @@
 $('.form_wallet_<%= @finance.wallet.id %>').html('<%= j render 'form'%>');
 $('.form_wallet_<%= @finance.wallet.id %>').show();
+<% if @finance.errors.any? %>
+  $('.notifications').html('<%= j render partial: "error_messages" %>');
+<% end %>

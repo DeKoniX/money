@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/jclay/bootstrap-notify-gem.git
+  revision: 80c14193d288829a25a61afe2d910e160af1cc64
+  specs:
+    bootstrap_notify (1.0.1)
+      bootstrap-sass
+      jquery-rails
+      rails (~> 3.2.8)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -34,6 +43,8 @@ GEM
       rake
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.0.4)
@@ -183,6 +194,7 @@ DEPENDENCIES
   annotate
   bcrypt-ruby
   bootstrap-will_paginate
+  bootstrap_notify!
   capistrano
   capistrano-unicorn
   capistrano_colors

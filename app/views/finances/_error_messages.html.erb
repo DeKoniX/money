@@ -1,0 +1,18 @@
+<% if @finance.errors.any? %>
+  <div id="error_explanation">
+   <div class="alert alert-error">
+      Произошло <%= @finance.errors.count %> <%= Russian.p(@finance.errors.count, "ошибок", "ошибки", "ошибок") %>.
+   </div>
+  <ul>
+   <% @finance.errors.messages.each do |error| %>
+     <% unless error[1] == [] %>
+       <% if error[0] == :m %>
+         <li>* Сумма <%= error[1][0]%> </li>
+        <% elsif error[0] == :wallet_id %>
+         <li>* Кошелёк <%= error[1] %> </li>
+        <% end %>
+      <% end %>
+   <% end %>
+ </ul>
+</div>
+<% end %>
